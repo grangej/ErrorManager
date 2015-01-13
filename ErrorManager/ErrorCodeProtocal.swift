@@ -10,7 +10,7 @@ import Foundation
 
 
 public struct ErrorCode {
-        let code: Int,
+        public let code: Int,
         localizedDescription: String?,
         localizedRecoverySuggestion: String?,
         localizedFailureReason: String?,
