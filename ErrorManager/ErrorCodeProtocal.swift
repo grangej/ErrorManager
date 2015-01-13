@@ -10,11 +10,21 @@ import Foundation
 
 
 public struct ErrorCode {
-        public let code: Int,
-        localizedDescription: String?,
-        localizedRecoverySuggestion: String?,
-        localizedFailureReason: String?,
-        localizedRecoveryOptions: String?
+    
+    public let code: Int
+    public let localizedDescription: String?
+    public let localizedRecoverySuggestion: String?
+    public let localizedFailureReason: String?
+    public let localizedRecoveryOptions: String?
+    
+    public init(code: Int, localizedDescription: String?, localizedRecoverySuggestion: String?, localizedFailureReason: String?, localizedRecoveryOptions: String?){
+        
+        self.code = code
+        self.localizedDescription = localizedDescription
+        self.localizedFailureReason = localizedFailureReason
+        self.localizedRecoveryOptions = localizedRecoveryOptions
+        self.localizedRecoverySuggestion = localizedRecoverySuggestion
+    }
 }
 
 public protocol ErrorCodeProtocal {
