@@ -10,6 +10,8 @@
 		3602CC241A6591AD00E5EF81 /* ErrorManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 3602CC231A6591AD00E5EF81 /* ErrorManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3602CC2A1A6591AD00E5EF81 /* ErrorManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3602CC1E1A6591AD00E5EF81 /* ErrorManager.framework */; };
 		3602CC311A6591AD00E5EF81 /* ErrorManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3602CC301A6591AD00E5EF81 /* ErrorManagerTests.swift */; };
+		3622F3F71A6593E30094E763 /* ErrorCodeProtocal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3622F3F61A6593E30094E763 /* ErrorCodeProtocal.swift */; };
+		3622F3FA1A6595510094E763 /* ErrorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3622F3F91A6595510094E763 /* ErrorManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		3602CC291A6591AD00E5EF81 /* ErrorManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ErrorManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3602CC2F1A6591AD00E5EF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3602CC301A6591AD00E5EF81 /* ErrorManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorManagerTests.swift; sourceTree = "<group>"; };
+		3622F3F61A6593E30094E763 /* ErrorCodeProtocal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorCodeProtocal.swift; sourceTree = "<group>"; };
+		3622F3F91A6595510094E763 /* ErrorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 			children = (
 				3602CC231A6591AD00E5EF81 /* ErrorManager.h */,
 				3602CC211A6591AD00E5EF81 /* Supporting Files */,
+				3622F3F61A6593E30094E763 /* ErrorCodeProtocal.swift */,
+				3622F3F91A6595510094E763 /* ErrorManager.swift */,
 			);
 			path = ErrorManager;
 			sourceTree = "<group>";
@@ -209,6 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3622F3FA1A6595510094E763 /* ErrorManager.swift in Sources */,
+				3622F3F71A6593E30094E763 /* ErrorCodeProtocal.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +327,7 @@
 		3602CC351A6591AD00E5EF81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -328,12 +337,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		3602CC361A6591AD00E5EF81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -395,6 +406,7 @@
 				3602CC361A6591AD00E5EF81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3602CC371A6591AD00E5EF81 /* Build configuration list for PBXNativeTarget "ErrorManagerTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +415,7 @@
 				3602CC391A6591AD00E5EF81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
