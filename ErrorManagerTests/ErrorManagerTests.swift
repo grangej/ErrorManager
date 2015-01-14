@@ -10,12 +10,12 @@ import UIKit
 import XCTest
 import ErrorManager
 
-enum ErrorCodes: Int, ErrorCodeProtocal {
+public enum ErrorCodes: Int, ErrorCodeProtocal {
     
     case TestCode1 = 1
     case TestCode2 = 2
     
-    var values : ErrorCode {
+    public var values : ErrorCode {
         
         get {
             
@@ -24,9 +24,9 @@ enum ErrorCodes: Int, ErrorCodeProtocal {
             case .TestCode1:
                 return ErrorCode(
                     code: self.rawValue,
-                    localizedDescription: "Test Error code 1",
-                    localizedRecoverySuggestion: nil,
-                    localizedFailureReason: nil,
+                    localizedDescription: "Test localDesc 1",
+                    localizedRecoverySuggestion: "Test Recovery Suggestion 1",
+                    localizedFailureReason: "Test Failure Rease 1",
                     localizedRecoveryOptions: nil)
             case .TestCode2:
                 return ErrorCode(
@@ -41,9 +41,11 @@ enum ErrorCodes: Int, ErrorCodeProtocal {
         }
     }
     
-    var domain : String {
+    public var domain : String {
+        get {
+            return "com.test.domain"
+        }
         
-        return "com.test.domain"
     }
     
 }
@@ -62,7 +64,42 @@ class ErrorManagerTests: XCTestCase {
     
     func testCreateErrorWithCode() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        
+        var error: NSError = ErrorManager.errorForErroCode(ErrorCodes.TestCode2)
+        
+        XCTAssertNotNil(error, "Error should not be nil")
+        
+        
+        XCTAssertEqual(error.localizedDescription, ErrorCodes.TestCode1.values.localizedDescription!, "Localized Descriptions should be equal")
+        
+        XCTAssertEqual(error.code, ErrorCodes.TestCode1.rawValue, "Error Codes should be equal!")
+        
+        XCTAssertEqual(error.domain, ErrorCodes.TestCode1.domain, "Error domains should be equal")
+        
+        XCTAssertEqual(error.localizedRecoverySuggestion!, ErrorCodes.TestCode1.values.localizedRecoverySuggestion!, "Error recovery suggestions should be the same")
+        
+        XCTAssertEqual(error.localizedFailureReason!, ErrorCodes.TestCode1.values.localizedFailureReason!, "Error failure reason should be the same")
+        
+    }
+    
+    func testCreateCustomError() {
+        
+        let desc: String = "Custom error"
+        
+        let domain: String = "com.test.domain"
+        
+        let code: Int = 3
+        
+        var error: NSError = ErrorManager.errorWithCode(code, domain: domain, localizedDescription: desc, localizedRecoverySuggestion: nil, localizedFailureReason: nil, localizedRecoveryOptions: nil)
+        
+        XCTAssertNotNil(error, "Error should not be nil")
+        
+        XCTAssertEqual(error.localizedDescription, desc, "Error descrptions should be equal")
+        
+        XCTAssertEqual(error.code, code, "Error codes should be equal")
+        
+        XCTAssertEqual(error.domain, domain, "Error domains should be equal")
+        
     }
     
     func testPerformanceExample() {

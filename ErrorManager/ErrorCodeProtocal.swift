@@ -15,9 +15,9 @@ public struct ErrorCode {
     public let localizedDescription: String?
     public let localizedRecoverySuggestion: String?
     public let localizedFailureReason: String?
-    public let localizedRecoveryOptions: String?
+    public let localizedRecoveryOptions: [AnyObject]?
     
-    public init(code: Int, localizedDescription: String?, localizedRecoverySuggestion: String?, localizedFailureReason: String?, localizedRecoveryOptions: String?){
+    public init(code: Int, localizedDescription: String?, localizedRecoverySuggestion: String?, localizedFailureReason: String?, localizedRecoveryOptions: [AnyObject]?){
         
         self.code = code
         self.localizedDescription = localizedDescription

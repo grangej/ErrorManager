@@ -17,9 +17,9 @@ public class ErrorManager {
         
     }
     
-    public class func errorWithCode(code: Int, domain: String, localizedDescription: String?, localizedRecoverySuggestion: String?, localizedFailureReason: String?, localizedRecoveryOptions: String?) -> NSError {
+    public class func errorWithCode(code: Int, domain: String, localizedDescription: String?, localizedRecoverySuggestion: String?, localizedFailureReason: String?, localizedRecoveryOptions: [AnyObject]?) -> NSError {
         
-        var userInfo: [NSString : String] = [NSString : String]()
+        var userInfo: [NSString : AnyObject] = [NSString : String]()
         
         if let localizedDescriptionStr = localizedDescription {
             userInfo[NSLocalizedDescriptionKey] = localizedDescriptionStr
