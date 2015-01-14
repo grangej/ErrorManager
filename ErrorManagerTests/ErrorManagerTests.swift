@@ -8,6 +8,45 @@
 
 import UIKit
 import XCTest
+import ErrorManager
+
+enum ErrorCodes: Int, ErrorCodeProtocal {
+    
+    case TestCode1 = 1
+    case TestCode2 = 2
+    
+    var values : ErrorCode {
+        
+        get {
+            
+            switch self{
+                
+            case .TestCode1:
+                return ErrorCode(
+                    code: self.rawValue,
+                    localizedDescription: "Test Error code 1",
+                    localizedRecoverySuggestion: nil,
+                    localizedFailureReason: nil,
+                    localizedRecoveryOptions: nil)
+            case .TestCode2:
+                return ErrorCode(
+                    code: self.rawValue,
+                    localizedDescription: "Test Error code 2",
+                    localizedRecoverySuggestion: nil,
+                    localizedFailureReason: nil,
+                    localizedRecoveryOptions: nil)
+            
+            }
+            
+        }
+    }
+    
+    var domain : String {
+        
+        return "com.test.domain"
+    }
+    
+}
 
 class ErrorManagerTests: XCTestCase {
     
@@ -21,7 +60,7 @@ class ErrorManagerTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testCreateErrorWithCode() {
         // This is an example of a functional test case.
         XCTAssert(true, "Pass")
     }

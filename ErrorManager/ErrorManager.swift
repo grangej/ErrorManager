@@ -13,31 +13,35 @@ public class ErrorManager {
     
     public class func errorForErroCode(errorCode: ErrorCodeProtocal) -> NSError {
         
+        return ErrorManager.errorWithCode(errorCode.values.code, domain: errorCode.domain, localizedDescription: errorCode.values.localizedDescription, localizedRecoverySuggestion: errorCode.values.localizedRecoverySuggestion, localizedFailureReason: errorCode.values.localizedFailureReason, localizedRecoveryOptions: errorCode.values.localizedRecoveryOptions)
+        
+    }
+    
+    public class func errorWithCode(code: Int, domain: String, localizedDescription: String?, localizedRecoverySuggestion: String?, localizedFailureReason: String?, localizedRecoveryOptions: String?) -> NSError {
+        
         var userInfo: [NSString : String] = [NSString : String]()
         
-        if let localizedDescription = errorCode.values.localizedDescription {
-            userInfo[NSLocalizedDescriptionKey] = localizedDescription
+        if let localizedDescriptionStr = localizedDescription {
+            userInfo[NSLocalizedDescriptionKey] = localizedDescriptionStr
         }
         
-        if let localizedRecoverySuggestion = errorCode.values.localizedRecoverySuggestion {
+        if let localizedRecoverySuggestionStr = localizedRecoverySuggestion {
             
-            userInfo[NSLocalizedRecoverySuggestionErrorKey] = localizedRecoverySuggestion
+            userInfo[NSLocalizedRecoverySuggestionErrorKey] = localizedRecoverySuggestionStr
         }
         
-        if let localizedFailureReason = errorCode.values.localizedFailureReason {
+        if let localizedFailureReasonStr = localizedFailureReason {
             
-            userInfo[NSLocalizedFailureReasonErrorKey] = localizedFailureReason
+            userInfo[NSLocalizedFailureReasonErrorKey] = localizedFailureReasonStr
         }
         
-        if let localizedRecoveryOptions = errorCode.values.localizedRecoveryOptions {
+        if let localizedRecoveryOptionsStr = localizedRecoveryOptions {
             
-            userInfo[NSLocalizedRecoveryOptionsErrorKey] = localizedRecoveryOptions
+            userInfo[NSLocalizedRecoveryOptionsErrorKey] = localizedRecoveryOptionsStr
         }
         
-        let errorMessage: NSError = NSError(domain: errorCode.domain, code: errorCode.values.code, userInfo: userInfo)
-        
+        let errorMessage: NSError = NSError(domain: domain, code: code, userInfo: userInfo)
         
         return errorMessage
-        
     }
 }
